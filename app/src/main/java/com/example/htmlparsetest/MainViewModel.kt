@@ -16,11 +16,20 @@ class MainViewModel : ViewModel() {
 
     init {
         getData()
+        //getDataFromLink()
     }
 
     private fun getData() {
         viewModelScope.launch(IO) {
            _listProduct.postValue(repository.getData())
+            //repository.getData()
+        }
+    }
+
+    fun getDataFromLink(){
+        val url = "https://www.pandora-alarm.ru/catalog/dxl/pandect-x-1800-l-v2.html"
+        viewModelScope.launch(IO) {
+            repository.getDataFromLink(url)
         }
     }
 }
