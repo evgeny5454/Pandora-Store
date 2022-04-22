@@ -1,4 +1,4 @@
-package com.example.htmlparsetest
+package com.example.htmlparsetest.views
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -16,10 +16,10 @@ fun Subtitle5(text: String, modifier: Modifier = Modifier) = Text(
 )
 
 @Composable
-fun Caption(text: String, modifier: Modifier = Modifier) = Text(
+fun Caption(text: String, modifier: Modifier = Modifier, color: Color) = Text(
     modifier = modifier,
     text = text,
-    style = TextStyle(color = Color.LightGray, fontSize = 14.sp, fontWeight = FontWeight.Normal)
+    style = TextStyle(color = color, fontSize = 14.sp, fontWeight = FontWeight.Normal)
 )
 
 @Composable

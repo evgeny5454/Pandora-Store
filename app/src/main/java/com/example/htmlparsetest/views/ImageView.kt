@@ -1,4 +1,4 @@
-package com.example.htmlparsetest
+package com.example.htmlparsetest.views
 
 import android.graphics.Bitmap
 import android.graphics.drawable.Drawable
