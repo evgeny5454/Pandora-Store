@@ -15,7 +15,7 @@ import com.example.htmlparsetest.Product
 
 @Composable
 fun ItemInCard(
-    product: Product
+    product: ItemCounter
 ) {
     Row(modifier = Modifier
         .fillMaxWidth()
@@ -41,12 +41,13 @@ fun ItemInCard(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 ImageView(
-                    imageUri = product.imageUrl,
+                    imageUri = product.image,
                     modifier = Modifier
                         .size(100.dp)
                 )
-                SubtitleMedium4(text = product.title, modifier = Modifier.weight(1f))
-                Caption(text = product.price, color = Color.Black)
+                SubtitleMedium4(text = product.title, modifier = Modifier.weight(0.6f))
+                Caption(text = "${product.count} шт.", color = Color.Gray, modifier = Modifier.weight(0.2f))
+                Caption(text = product.prise, color = Color.Black)
             }
         }
     }

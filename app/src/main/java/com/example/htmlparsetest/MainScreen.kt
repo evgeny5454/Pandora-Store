@@ -40,7 +40,11 @@ fun MainScreen(navController: NavController, mainViewModel: MainViewModel) {
                 BottomNavigationItem(
                     selected = false,
                     onClick = {
-                        mainViewModel.getData(point = point)
+                        if (point != cart) {
+                            mainViewModel.getData(point = point)
+                        } else {
+                            navControllerHost.navigate(point)
+                        }
                     },
                     label = {
                         when (point) {
@@ -149,11 +153,12 @@ fun MainScreen(navController: NavController, mainViewModel: MainViewModel) {
                 )
             }
             composable(cart) {
-                ProductList(
+                /*ProductList(
                     productsList = listProduct,
                     navController,
                     mainViewModel
-                )
+                )*/
+                Cart(mainViewModel = mainViewModel)
             }
         }
     }
@@ -190,7 +195,7 @@ fun ProductList(
                 }
             }
         } else {
-            stickyHeader {
+            /*stickyHeader {
                 Box(
                     modifier = Modifier
                         .height(56.dp)
@@ -208,29 +213,9 @@ fun ProductList(
             }
             items(listCart) { selectProduct ->
                 ItemInCard(product = selectProduct)
-            }
-
+            }*/
         }
     }
 }
-
-/*fun getPrise(listCart: List<Product>) : String {
-    val list = mutableListOf<String>()
-    val listPrise = mutableListOf<Int>()
-    var int = 0
-
-    listCart.forEach {
-        list.add(it.price)
-    }
-
-    list.forEach {
-        val format = it.replace(" ", "")
-        listPrise.add(format.toInt())
-    }
-    listPrise.forEach {
-        int.plus(it)
-    }
-    return int.toString()
-}*/
 
 

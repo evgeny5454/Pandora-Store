@@ -63,6 +63,7 @@ class Repository {
 
             list.add(productItem)
         }
+        //Log.d("Products", )
         Log.d("ListItems", list.toString())
         return list
     }
@@ -164,10 +165,6 @@ class Repository {
         val cartList: MutableList<Product> = mutableListOf()
         cartList.addAll(cart)
         cartList.add(item)
-
-
-        //getSumPrise(priceList)
-
         return cartList
     }
 
@@ -187,10 +184,13 @@ class Repository {
     }
 }
 
-fun setDelimiter(string: String) : String{
+fun setDelimiter(string: String): String {
     var formattedString = string
     val pointPosition = formattedString.lastIndex + 1
-    formattedString = formattedString.substring(0, pointPosition - 3) + " " + formattedString.substring(pointPosition - 3)
+    formattedString =
+        formattedString.substring(0, pointPosition - 3) + " " + formattedString.substring(
+            pointPosition - 3
+        )
     for (i in 0 until pointPosition / 3) {
         val lastSpacePosition = formattedString.indexOf(" ")
         formattedString = if (lastSpacePosition - 3 > 0) {
