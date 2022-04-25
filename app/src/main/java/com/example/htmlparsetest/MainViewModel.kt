@@ -1,6 +1,5 @@
 package com.example.htmlparsetest
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -35,15 +34,15 @@ class MainViewModel : ViewModel() {
     private val _possible: MutableLiveData<Boolean> = MutableLiveData()
     val possible: LiveData<Boolean> = _possible
 
-    private val _point: MutableLiveData<String> = MutableLiveData(catalog)
-    val point: LiveData<String> =_point
+    private val _navPoint: MutableLiveData<String> = MutableLiveData(catalog)
+    val navPoint: LiveData<String> = _navPoint
 
     init {
         getData(catalog)
     }
 
     fun getData(point: String) {
-        _point.postValue(point)
+        _navPoint.postValue(point)
         if (point != cartPoint) {
             viewModelScope.launch(IO) {
                 _listProduct.postValue(repository.getData(point))
@@ -62,8 +61,14 @@ class MainViewModel : ViewModel() {
     fun getDataFromLink(endPoint: String) {
         //val url = "https://www.pandora-alarm.ru/catalog/dxl/pandect-x-1800-l-v2.html"
         viewModelScope.launch(IO) {
-            _point.value?.let { point->
-                _detailsProduct.postValue(repository.getDataFromLink(point,endPoint, _prise.value ?: false))
+            _navPoint.value?.let { point ->
+                _detailsProduct.postValue(
+                    repository.getDataFromLink(
+                        point,
+                        endPoint,
+                        _prise.value ?: false
+                    )
+                )
             }
 
         }
@@ -71,7 +76,7 @@ class MainViewModel : ViewModel() {
 
     fun addToCart() {
         viewModelScope.launch(IO) {
-            var item = Product("","","","","","")
+            var item = Product("", "", "", "", "", "")
             _setProduct.value?.let {
                 item = it
             }
@@ -93,7 +98,37 @@ class MainViewModel : ViewModel() {
         _setProduct.postValue(product)
     }
 
+    fun correctСount(count: Int, product: Product) {
+        var cart = emptyList<Product>()
+        _cart.value?.let {
+            cart = it
+        }
+        _cart.value = repository.correctCount(count, product, cart)
+        updateFinalPrise()
+    }
+
+    private fun updateFinalPrise() {
+        var cart = emptyList<Product>()
+        _cart.value?.let {
+            cart = it
+        }
+        if (cart.isNotEmpty()){
+            _finalPrise.postValue(repository.getSumPrise(cart))
+        } else {
+            _finalPrise.postValue("")
+        }
+    }
+
+    fun deleteProduct(myProduct: Product) {
+        var cart = emptyList<Product>()
+        _cart.value?.let {
+            cart = it
+        }
+        _cart.value = repository.deleteProduct(myProduct, cart)
+
+        updateFinalPrise()
 
 
+    }
 }
 

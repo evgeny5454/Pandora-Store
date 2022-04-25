@@ -5,10 +5,8 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
+import androidx.compose.runtime.*
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
@@ -28,9 +26,11 @@ private const val cart = "cart"
 
 @Composable
 fun MainScreen(navController: NavController, mainViewModel: MainViewModel) {
+
     val listProduct by mainViewModel.listProduct.observeAsState(emptyList())
     val bottomItems = listOf(catalog, accessories, cart, moto, gps)
-    //val cartList by mainViewModel.cart.observeAsState(emptyList())
+    val navPoint by mainViewModel.navPoint.observeAsState("")
+    //var showDialog by remember { mutableStateOf(false) }
 
     val navControllerHost = rememberNavController()
 
@@ -114,7 +114,7 @@ fun MainScreen(navController: NavController, mainViewModel: MainViewModel) {
     }) {
         NavHost(
             navController = navControllerHost,
-            startDestination = catalog,
+            startDestination = accessories,
             modifier = Modifier.padding(it)
         ) {
             composable(catalog) {
@@ -153,27 +153,19 @@ fun MainScreen(navController: NavController, mainViewModel: MainViewModel) {
                 )
             }
             composable(cart) {
-                /*ProductList(
-                    productsList = listProduct,
-                    navController,
-                    mainViewModel
-                )*/
                 Cart(mainViewModel = mainViewModel)
             }
         }
     }
 }
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun ProductList(
     productsList: List<Product>,
     navController: NavController,
     mainViewModel: MainViewModel
 ) {
-    val link by mainViewModel.point.observeAsState("")
-    val listCart by mainViewModel.cart.observeAsState(emptyList())
-    val finalPrise by mainViewModel.finalPrise.observeAsState("")
+    val link by mainViewModel.navPoint.observeAsState("")
     LazyColumn(
         verticalArrangement = Arrangement.spacedBy(4.dp)
     )
@@ -194,28 +186,8 @@ fun ProductList(
                     )
                 }
             }
-        } else {
-            /*stickyHeader {
-                Box(
-                    modifier = Modifier
-                        .height(56.dp)
-                        .fillMaxWidth()
-                        .background(color = MaterialTheme.colors.background)
-                ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        modifier = Modifier.padding(16.dp)
-                    ) {
-                        Subtitle5(text = "Общая сумма заказа:" , modifier = Modifier.weight(1f))
-                        Subtitle5(text = finalPrise)
-                    }
-                }
-            }
-            items(listCart) { selectProduct ->
-                ItemInCard(product = selectProduct)
-            }*/
         }
     }
-}
 
+}
 

@@ -32,6 +32,8 @@ class Repository {
     private val keychain = "/catalog/other/breloki/"
     private val moto = "/catalog/motosignalizacii/"
 
+    //private val cartList: MutableList<Product> = mutableListOf()
+
 
     fun getData(endPoint: String): List<Product> {
         val doc: Document = Jsoup.connect("$baseurl$endPoint").get()
@@ -181,6 +183,44 @@ class Repository {
             int += format.toInt()
         }
         return setDelimiter("$int")
+    }
+
+    fun getSumPrise(cart: List<Product>): String {
+        var int = 0
+        val priceList: MutableList<String> = mutableListOf()
+        cart.forEach { product ->
+            priceList.add(product.price)
+        }
+        //priceList.add(item.price)
+
+        priceList.forEach {
+            val format = it.replace(" ", "")
+            int += format.toInt()
+        }
+        return setDelimiter("$int")
+    }
+
+    fun correctCount(count: Int, product: Product, cart: List<Product>): List<Product> {
+        val cartList: MutableList<Product> = mutableListOf()
+        cartList.addAll(cart)
+        val myproduct = product
+        cartList.removeAll(listOf(product))
+        Log.d("MYCARDDD", cartList.toString())
+
+        var ert = 0
+        for (i in 1..count) {
+            ert++
+            cartList.add(0, myproduct)
+        }
+        Log.d("MYCARDDD", ert.toString())
+        return cartList
+    }
+
+    fun deleteProduct(myProduct: Product, cart: List<Product>): List<Product> {
+        val cartList: MutableList<Product> = mutableListOf()
+        cartList.addAll(cart)
+        cartList.removeAll(listOf(myProduct))
+        return cartList
     }
 }
 

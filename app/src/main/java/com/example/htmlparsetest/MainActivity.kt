@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val mainViewModel: MainViewModel = viewModel()
-            Navigation(mainViewModel = mainViewModel)
+            Navigation(mainViewModel = mainViewModel )
         }
     }
 }
