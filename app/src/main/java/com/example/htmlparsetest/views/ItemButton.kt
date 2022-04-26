@@ -50,8 +50,7 @@ fun ItemButton(
                 ImageView(
                     imageUri = product.imageUrl,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(200.dp)
+                        .width(300.dp)
                 )
 
                 Subtitle5(text = product.title)
@@ -107,8 +106,7 @@ fun ItemButton2(
                 ImageView(
                     imageUri = product.imageUrl,
                     modifier = Modifier
-                        .fillMaxWidth()
-                        .height(200.dp)
+                        .width(300.dp)
                 )
                 Subtitle5(text = product.title)
                 Spacer(modifier = Modifier.height(4.dp))
