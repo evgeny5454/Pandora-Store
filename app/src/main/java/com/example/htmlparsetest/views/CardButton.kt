@@ -14,8 +14,8 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.htmlparsetest.MainViewModel
 import com.example.htmlparsetest.Product
+import com.example.htmlparsetest.view_model.MainViewModel
 
 //data class SelectedProduct(val name: String, val prise: String, val headerImage: String)
 

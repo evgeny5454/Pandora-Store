@@ -1,4 +1,4 @@
-package com.example.htmlparsetest
+package com.example.htmlparsetest.screens
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -14,6 +14,9 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.htmlparsetest.Product
+import com.example.htmlparsetest.R
+import com.example.htmlparsetest.view_model.MainViewModel
 import com.example.htmlparsetest.views.*
 
 private const val catalog = "/catalog/dxl/"
@@ -29,7 +32,7 @@ fun MainScreen(navController: NavController, mainViewModel: MainViewModel) {
 
     val listProduct by mainViewModel.listProduct.observeAsState(emptyList())
     val bottomItems = listOf(catalog, accessories, cart, moto, gps)
-    val navPoint by mainViewModel.navPoint.observeAsState("")
+    //val navPoint by mainViewModel.navPoint.observeAsState("")
     //var showDialog by remember { mutableStateOf(false) }
 
     val navControllerHost = rememberNavController()

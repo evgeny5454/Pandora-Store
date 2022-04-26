@@ -12,15 +12,15 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.htmlparsetest.MainViewModel
 import com.example.htmlparsetest.ProductDetails
+import com.example.htmlparsetest.view_model.MainViewModel
 
 @Composable
-fun PriceView(mainViewModel: MainViewModel, possible: Boolean){
+fun PriceView(mainViewModel: MainViewModel, possible: Boolean) {
     val detailsProduct by mainViewModel.detailsProduct.observeAsState(
         ProductDetails(
             "",
-            emptyList(), emptyList(), "", "",""
+            emptyList(), emptyList(), "", "", ""
         )
     )
     Row(
@@ -34,15 +34,7 @@ fun PriceView(mainViewModel: MainViewModel, possible: Boolean){
             modifier = Modifier.padding(start = 16.dp),
             style = TextStyle(color = Color.Black, fontSize = 20.sp, fontWeight = FontWeight.Medium)
         )
-        /*Text(
-            text = "₽/шт.",
-            modifier = Modifier
-                .weight(1f)
-                .padding(4.dp),
-            style = TextStyle(color = Color.LightGray, fontSize = 12.sp)
-        )*/
         Spacer(modifier = Modifier.weight(1f))
         if (possible) CardButton(mainViewModel = mainViewModel)
-
     }
 }

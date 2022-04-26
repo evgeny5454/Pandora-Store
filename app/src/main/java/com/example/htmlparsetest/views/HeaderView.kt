@@ -16,8 +16,6 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-val whiteTwo = Color(0xFFF9F9F9)
-
 @Composable
 fun HeaderView(height: Dp, title: String) {
     Box(

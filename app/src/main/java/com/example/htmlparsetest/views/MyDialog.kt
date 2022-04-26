@@ -1,12 +1,14 @@
 package com.example.htmlparsetest.views
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.Card
+import androidx.compose.material.ContentAlpha
+import androidx.compose.material.LocalContentAlpha
+import androidx.compose.material.Text
 import androidx.compose.material.ripple.rememberRipple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.CompositionLocalProvider
@@ -15,7 +17,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
@@ -51,8 +52,6 @@ fun MyDialog(
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                    //.height(300.dp)
-                    //.background(color = color)
                 ) {
                     Row(
                         modifier = Modifier.padding(start = 8.dp, end = 8.dp),
@@ -69,8 +68,6 @@ fun MyDialog(
                             Caption(text = "$count шт.", color = Color.Gray)
                         }
                     }
-
-
                 }
                 Column(
                     modifier = Modifier.padding(start = 16.dp, end = 16.dp)
@@ -133,7 +130,8 @@ fun MyDialog(
                                 interactionSource = MutableInteractionSource(),
                                 indication = rememberRipple(color = Color.DarkGray),
                                 onClick = {
-                                    onNegativeClick.invoke(product) }
+                                    onNegativeClick.invoke(product)
+                                }
                             )
                             .padding(8.dp)
                     )
@@ -154,7 +152,6 @@ fun MyDialog(
                             .padding(8.dp)
                     )
                 }
-
             }
         }
     }

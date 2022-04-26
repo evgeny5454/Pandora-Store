@@ -1,4 +1,4 @@
-package com.example.htmlparsetest
+package com.example.htmlparsetest.screens
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.padding
@@ -9,7 +9,10 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.htmlparsetest.ProductDetails
+import com.example.htmlparsetest.view_model.MainViewModel
 import com.example.htmlparsetest.views.*
+
 
 
 @OptIn(ExperimentalFoundationApi::class)
