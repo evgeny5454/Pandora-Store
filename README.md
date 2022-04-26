@@ -1,5 +1,5 @@
 
-<h1 align = "center"><a href="https://github.com/evgeny5454/Pandora-Store/blob/master/Images/Pandora%20Store.apk" target="_blank"><img src="https://github.com/evgeny5454/Pandora-Store/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" height="50"/></a>
+<h1 align = "center"><a href="https://github.com/evgeny5454/Pandora-Store/raw/master/Images/Pandora%20Store.apk" target="_blank"><img src="https://github.com/evgeny5454/Pandora-Store/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" height="50"/></a>
   <span itemprop="name">Pandora Store</span></h1>
 
 Приложение позволяет просматривать каталог сигнализаций, мотосигнализаций и аксесуаров Pandora и добавлять их в список покупок
@@ -18,7 +18,7 @@
   </tr>
  </table>
  
- <a href="https://github.com/evgeny5454/Pandora-Store/blob/master/Images/Pandora%20Store.apk" target="_blank"><img src="https://github.com/evgeny5454/Pandora-Store/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" height="50"/>Pandora Store</a>
+ <a href="https://github.com/evgeny5454/Pandora-Store/raw/master/Images/Pandora%20Store.apk" target="_blank"><img src="https://github.com/evgeny5454/Pandora-Store/blob/master/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" height="50"/>Pandora Store</a>
  Не является официальным приложением бренда Pandora
  
  
