@@ -41,8 +41,10 @@ class MainViewModel : ViewModel() {
     val navPoint: LiveData<String> = _navPoint
 
     init {
-        getData(catalog)
+        //getData(catalog)
+        //downloadFile()
     }
+
 
     fun getData(point: String) {
         _navPoint.postValue(point)
