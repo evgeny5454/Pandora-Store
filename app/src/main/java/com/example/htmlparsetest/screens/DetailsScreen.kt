@@ -21,6 +21,7 @@ fun DetailsScreen(mainViewModel: MainViewModel, endPoint: String?, navController
     if (endPoint != null) {
         mainViewModel.getDataFromLink(endPoint)
     }
+    
     val detailsProduct by mainViewModel.detailsProduct.observeAsState(
         ProductDetails(
             "",
@@ -28,10 +29,12 @@ fun DetailsScreen(mainViewModel: MainViewModel, endPoint: String?, navController
         )
     )
     val possible by mainViewModel.possible.observeAsState(false)
+    
+    
 
     LazyColumn(content = {
         stickyHeader {
-            Toolbar(details = detailsProduct, navController = navController)
+            TopBar(navController = navController , title = detailsProduct.productName)
         }
         if (detailsProduct.urlImages.isNotEmpty()) {
             item { ImageGallery(listImages = detailsProduct.urlImages) }

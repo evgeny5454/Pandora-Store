@@ -1,7 +1,7 @@
 package com.example.htmlparsetest
 
 sealed class Screen(val route: String){
-    object MainScreen : Screen("main_screen")
+    object FileManagerView : Screen("file_manager_view")
     object DetailsScreen: Screen("details_screen")
 
     fun withArgs(vararg args: String) : String {

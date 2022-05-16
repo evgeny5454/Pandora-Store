@@ -13,6 +13,7 @@ import com.example.htmlparsetest.view_model.MainViewModel
 const val END_POINT = "end_point"
 //const val PRISE = "prise"
 
+/*
 @Composable
 fun Navigation(mainViewModel: MainViewModel) {
     val navController = rememberNavController()
@@ -37,4 +38,5 @@ fun Navigation(mainViewModel: MainViewModel) {
         }
     }
 }
+*/
 
