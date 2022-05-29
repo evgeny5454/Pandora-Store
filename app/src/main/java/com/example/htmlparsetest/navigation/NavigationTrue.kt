@@ -1,5 +1,6 @@
 package com.example.htmlparsetest.navigation
 
+import android.os.Environment
 import androidx.compose.material.ScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
@@ -20,6 +21,9 @@ const val END_POINT = "end_point"
 
 @Composable
 fun NavigationTrue(navController: NavHostController, mainViewModel: MainViewModel, scope: CoroutineScope, scaffoldState: ScaffoldState) {
+
+    var files = Environment.getExternalStorageDirectory()
+
     NavHost(navController = navController, startDestination = NavDrawerItem.CarAlarms.route) {
         composable(NavDrawerItem.CarAlarms.route) {
             CarAlarmsView(mainViewModel = mainViewModel, navController = navController, scope = scope , scaffoldState = scaffoldState)
@@ -28,7 +32,9 @@ fun NavigationTrue(navController: NavHostController, mainViewModel: MainViewMode
             ProfileView(navController = navController)
         }
         composable(route = Screen.FileManagerView.route) {
-            FileManagerView(navController = navController)
+            FileManagerView(navController = navController, files = files , onClick = {
+                files = Environment.getExternalStoragePublicDirectory(it.absolutePath)
+            })
         }
         composable(
             route = Screen.DetailsScreen.route + "/{$END_POINT}",

@@ -17,11 +17,11 @@ import java.io.File
 import java.nio.file.Path
 
 @Composable
-fun FileItem(file: File, onClick: (String) ->Unit) {
+fun FileItem(file: File, onClick: (File) ->Unit) {
     Row(modifier = Modifier
         .fillMaxWidth()
         .clickable {
-            onClick.invoke(file.absolutePath)
+            onClick.invoke(file)
         }
     ) {
         Image(
